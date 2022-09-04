@@ -25,11 +25,17 @@
       	<form action="{{ route('store.user.quiz') }}" method="post">
           @csrf
           <div class="card">
+            <div class="card-header">
+              <div class="text-center">
+                <h3>Total Marks : {{ $marks }}</h3>
+              </div>
+            </div>
              <div class="card-body">
                <div class="row mt-2">
                  @foreach($questions as $key=> $row)
                  <div class="col-sm-12">
                    <hr>
+                   <p class="float-right">{{ $row->marks }}</p>
                    <h4> Q{{ ++$key }} : {{ $row->question }}</h4>
                    <nav class="navbar">
                      <div class="d-inline-flex" style="width:100%;">

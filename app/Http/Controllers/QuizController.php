@@ -31,7 +31,8 @@ class QuizController extends Controller
     {
         $quiz = Quiz::where('slug',$slug)->first();
         $questions = Question::where('quiz_id',$quiz->id)->with('option')->get();
-        return view('user.quiz.start_quiz',compact('questions','quiz'));
+        $marks = Question::where('quiz_id',$quiz->id)->sum('marks');
+        return view('user.quiz.start_quiz',compact('questions','quiz','marks'));
     }
 
     /**
